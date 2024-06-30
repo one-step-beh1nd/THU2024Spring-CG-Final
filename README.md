@@ -21,6 +21,35 @@
 
 在这里远程感谢以下代码对我写大作业的帮助：
 
+[学长的代码](https://github.com/zhanglbthu/THU2023Spring-CG-FinalProject) 实现了
+
+- whitted style光线追踪（疑似有bug）
+- path tracing，不包括NEE、glossy材质
+- 参数曲面求交（有明显的bug，可能他报告里的图不是他生成的）
+- **OPENMP加速（不作为得分点，但可以大大减少渲染时间，从而更快出结果）**
+- 光子映射（自2024春开始不再得分，因为太多人抄往年的这个算法）
+- 纹理贴图
+- 景深相机
+- cos-weighted采样
+- 抗锯齿（然而抗的效果并不好）
+- 复杂三角网格（我没写，不敢保证他的一定对）
+- 包围盒（同上）
+- BVH树（同上）
+- 法向插值（同上）
+
+
+[smallpt](https://blog.csdn.net/g11d111/article/details/108189198) 请不要看99行的，去看二百多行的。其中包含
+
+- path tracing，包括NEE，不包括glossy材质
+- 抗锯齿（效果很好，但是时间耗费更多，约4倍）
+- OPENMP加速
+- cos-weighted采样
+
+[基于cook-torrance模型实现glossy材质](https://zhuanlan.zhihu.com/p/160804623)
+- 如题，其效果确实好，但有需要注意的地方，见后 TODO:加入超链接
+
+## 一、 效果图
+
 
 
 ## 一. 大作业要求
