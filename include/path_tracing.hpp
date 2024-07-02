@@ -164,8 +164,8 @@ public:
 // 参考 https://zhuanlan.zhihu.com/p/160804623 实现菲涅尔近似
     float Schlick(const Vector3f & V, const Vector3f & N, float ref_index){
         float cosI = abs(Vector3f::dot(V, N));
-        float R0 = 0.2;
-        float schlick = R0 + (1.0 - R0) * pow(1.0 - cosI, 5);
+        float F0 = 0.2;
+        float schlick = F0 + (1.0 - F0) * pow(1.0 - cosI, 5);
         return schlick;
     }
 
