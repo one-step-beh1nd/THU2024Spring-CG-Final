@@ -49,6 +49,7 @@
 [基于cook-torrance模型实现glossy材质](https://zhuanlan.zhihu.com/p/160804623)
 - 如题，其效果确实好，但有需要注意的地方，见后 [glossy材质](#42-glossy材质)
 
+以及我的同学 ls、mxy、jyx、lh 对我的帮助
 ## 一、 效果图
 ### 路径追踪，包括漫反射（左右墙壁）、理想反射（左边球）、理想折射（右边球）、抗锯齿
 
@@ -286,16 +287,22 @@ glossy材质有一个额外的参数：粗糙度。不同粗糙度的效果请�
 在计算glossy的函数`glossy`中，对其中一些变量的命名加以声明。
 
 ```
-Vector3f rho； // 交点处的
-float d = 1;   // 漫反射系数，自己定义的
-float s = 20;  // 镜面反射系数，自己定义的
+Vector3f rho； // 交点处的颜色，即diffuseColor
+float d = 1;   // 漫反射系数，自己设置具体的数值
+float s = 20;  // 镜面反射系数，自己设置具体的数值
 Vector3f l;    // 入射光线的方向的反方向。入射光线：即pathTracer的参数ray。反方向：保证其指向平面外
 Vector3f v;    // 按照漫反射计算的出射光线的方向
 Vector3f n;    // 交点处的法向
 Vector3f h;    // l和v的角平分线
 ```
 
+glossy的总体计算公式参考ppt：
 
+![ppt_glossy](./demo/ppt_glossy.png)
+
+这个ppt中，前一项是一个三维向量，后一项是一个常数。怎么相加呢？**将向量的每一个分量都加上这个常数**。
+
+还记得前面讲过，`pathTracer`里面递归结果乘的`hit_color`，可以理解为三个分量的衰减率吗？如果我们把第二项也理解为一个衰减率，那么就要在每一分量上都加上这个分量。
 ### 4.3 Next Event Estimation
 
 ### 4.4 运动模糊：以球为例
